@@ -32,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.mlkit.vision.objects.ObjectDetector;
 import com.squareup.picasso.Picasso;
 
 import org.checkerframework.checker.units.qual.C;
