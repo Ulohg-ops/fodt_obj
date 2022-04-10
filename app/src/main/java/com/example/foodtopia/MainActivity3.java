@@ -118,12 +118,12 @@ public class MainActivity3 extends AppCompatActivity {
 
     private void initializeDetector() {
         ObjectDetector.ObjectDetectorOptions options = ObjectDetector.ObjectDetectorOptions.builder()
-                .setMaxResults(5)
+                .setMaxResults(3)
                 .build();
         try {
             detector = ObjectDetector.createFromFileAndOptions(
                     this,
-                    "salad.tflite",
+                    "androidv3.tflite",
                     options
             );
         } catch (IOException e) {
@@ -151,14 +151,15 @@ public class MainActivity3 extends AppCompatActivity {
         pen.setStrokeWidth(8F);
         pen.setStyle(Paint.Style.STROKE);
         Canvas canvas1 = new Canvas(bitmap2);
-        Rect rect1 = new Rect(-4, 7, 428, 319);
-        canvas1.drawRect(rect1, pen);
+        for(Detection detection : results){
+            Rect rect=new Rect((int)detection.getBoundingBox().left,
+                 (int)detection.getBoundingBox().top,
+                 (int)detection.getBoundingBox().right,
+                 (int)detection.getBoundingBox().bottom);;
+            canvas1.drawRect(rect,pen);
+            System.out.println(detection);
+        }
         imageView.setImageBitmap(bitmap2);
-//        for(Detection detection : results){
-//
-//            detection.getBoundingBox();
-//        }
-
 
     }
 
